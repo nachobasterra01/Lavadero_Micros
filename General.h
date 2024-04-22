@@ -235,4 +235,5 @@
 		#define PIN_SO12_PORT PB2
 		#define PIN_SO12_DDR  DDB2
 		#define PIN_SO12_PIN  PINB2
+	
 #endif /* GENERAL_H_ */
