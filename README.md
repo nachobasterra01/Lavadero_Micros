@@ -8,6 +8,8 @@ Parte 2: Control de la barrera de entrada, rodillo de lavado vertical y de la lu
 
 Parte 3: Control de la cinta de arrastre, semáforo, parada de emergencia e integración del sistema (apertura de la barrera en las condiciones adecuadas, gestión de luces, parada de seguridad, parada de emergencia…
 
+General: 
+
 # Conexión diseños de referencias
 1- Conectar la maqueta al conector J1 de la placa Molase del micro con un cable plano, directamente, SIN PASAR POR LA PLACA DE CONEXIONADO de cada grupo
 
