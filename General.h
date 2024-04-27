@@ -8,20 +8,23 @@
 #define GENERAL_H_
 
 // Definicion de macros de trabajo 
-	#define setBit(Registro,Bit) (Registro |= (1 << Bit))
-  #define clearBit(Registro,Bit) (Registro &= ~(1 << Bit))
-  #define toggleBit(Registro,Bit) (Registro ^= (1 << Bit))  
+
+#define setBit(Registro,Bit)	(Registro |= (1 << Bit))	// pone a 1 el bit B del puerto P
+#define clearBit(Registro,Bit)	(Registro &= ~(1 << Bit))	// pone a 0 el bit B del puerto P
+#define toggleBit(Registro,Bit) (Registro ^= (1 << Bit))  	// cambia el valor del bit B del puerto P
+
+#define isBitSet(Registro, Bit) (Registro & (1 << Bit))		// devuelve '1' si dicho bit es '1'
+#define isClrSet(Registro, Bit) (!isBitSet(Registro, Bit))	// devuelve '1' si dicho bit es '0'
 
 // Redefinicion de constantes 
+
 	// Caracteristicas del microprocesador
-    #define Freq_uC 8000000
-  // Estado de maqueta 
-		#define CYCLE_WORKING 1
-		#define CYCLE_STOPPED 0
-	// Timer seconds => TIMER 1: Mode CTC (ICRn) with preescalar 256 -- A definir
-
-	// Timer miliseconds => TIMER 3: Mode CTC (ICRn) without preescalar -- A definir
-
+		#define Freq_uC 8000000
+	
+	// Estado de maqueta 
+		#define MAQUETA_ON 1 //CYCLE_WORKING
+		#define MAQUETA_OFF 0 //CYCLE_STOPPED
+		
 	// MOTORES
 	
 		// Motor M1 => Barrera de entrada
@@ -161,18 +164,18 @@
 		#define PIN_L1_PORT PL1
 		#define PIN_L1_DDR  DDL1
 		#define PIN_L1_PIN  PINL1
-		// L2
-		#define PIN_L2_PORT PL3
-		#define PIN_L2_DDR  DDL3
-		#define PIN_L2_PIN  PINL3		
-		// L3
-		#define PIN_L3_PORT PL5
-		#define PIN_L3_DDR  DDL5
-		#define PIN_L3_PIN  PINL5
 		// L4
-		#define PIN_L4_PORT PL7
-		#define PIN_L4_DDR  DDL7
-		#define PIN_L4_PIN  PINL7
+		#define PIN_L4_PORT PL3
+		#define PIN_L4_DDR  DDL3
+		#define PIN_L4_PIN  PINL3		
+		// L5
+		#define PIN_L5_PORT PL5
+		#define PIN_L5_DDR  DDL5
+		#define PIN_L5_PIN  PINL5
+		// L6
+		#define PIN_L6_PORT PL7
+		#define PIN_L6_DDR  DDL7
+		#define PIN_L6_PIN  PINL7
 		
 	// SENSORES
 		// REGISTROS S01-S05-S06-S12 B
@@ -235,5 +238,26 @@
 		#define PIN_SO12_PORT PB2
 		#define PIN_SO12_DDR  DDB2
 		#define PIN_SO12_PIN  PINB2
+
+// FUNCIONES COMUNES
+	// Funciones manejo registros 
+	
+	// Funciones temporales
+	void setupTimers(void);
+	void delay_milliseconds(uint32_t);	// waitms(uint32_t);
+	void delay_seconds(uint32_t);		// waitsec(uint32_t);
+	uint32_t millis(void);
+	uint32_t seconds(void);
+	
+	// Funciones globales
+	void setup_General(void);
+	uint8_t getNumCar(void);
+	void incNumCar(void);
+	void decNumCar(void);
+	
+	// Funciones de interrupción
 	
 #endif /* GENERAL_H_ */
+
+
+
