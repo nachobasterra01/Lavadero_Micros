@@ -22,8 +22,8 @@
 		#define Freq_uC 8000000
 	
 	// Estado de maqueta 
-		#define MAQUETA_ON 1 //CYCLE_WORKING
-		#define MAQUETA_OFF 0 //CYCLE_STOPPED
+		#define MAQUETA_ON 1
+		#define MAQUETA_OFF 0
 		
 	// MOTORES
 	
@@ -244,8 +244,8 @@
 	
 	// Funciones temporales
 	void setupTimers(void);
-	void delay_milliseconds(uint32_t);	// waitms(uint32_t);
-	void delay_seconds(uint32_t);		// waitsec(uint32_t);
+	void delay_milliseconds(uint32_t);
+	void delay_seconds(uint32_t);
 	uint32_t millis(void);
 	uint32_t seconds(void);
 	
