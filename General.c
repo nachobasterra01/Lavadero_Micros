@@ -78,7 +78,7 @@ void decNumCar(void){ // Decrementa en uno el contador de coches en lavadero
 
 ISR(TIMER1_COMPA_vect){ // Segundos
 	s++;
-	// CONTINUARÁ
+	// CONTINUARÁ aqui poner lo de %nsque
 }
 
 ISR(TIMER3_COMPA_vect){ // Milisegundos
