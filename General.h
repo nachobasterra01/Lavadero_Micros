@@ -20,10 +20,11 @@
 
 	// Caracteristicas del microprocesador
 		#define Freq_uC 8000000
-	
+		#define Check_height_sensors 50 // MS en comprobar estado (Regular en maqueta)
+		#define Tiempo_prove_new 1200 // Tiempo comprobación entrada nueva en ms(dos sensores distintos)
 	// Estado de maqueta 
-		#define MAQUETA_ON 1
-		#define MAQUETA_OFF 0
+		#define MAQUETA_ON 1 //CYCLE_WORKING
+		#define MAQUETA_OFF 0 //CYCLE_STOPPED
 		
 	// MOTORES
 	
@@ -240,12 +241,14 @@
 		#define PIN_SO12_PIN  PINB2
 
 // FUNCIONES COMUNES
-	// Funciones manejo registros 
+	// Funciones de Stop
+	void setStop(void);
+	uint8_t getStop(void);
 	
 	// Funciones temporales
 	void setupTimers(void);
-	void delay_milliseconds(uint32_t);
-	void delay_seconds(uint32_t);
+	void delay_milliseconds(uint32_t);	// waitms(uint32_t);
+	void delay_seconds(uint32_t);		// waitsec(uint32_t);
 	uint32_t millis(void);
 	uint32_t seconds(void);
 	
@@ -258,6 +261,3 @@
 	// Funciones de interrupción
 	
 #endif /* GENERAL_H_ */
-
-
-
