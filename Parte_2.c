@@ -66,7 +66,9 @@ ISR(PCINT0_vect){
 	}
 	else {
 	PORTK = 0x00; //deshabilitar barrera
+		delay_seconds(); //configurar segundos para el delay
 	}
+	
 }
 
 int contador_ms;
