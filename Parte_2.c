@@ -17,13 +17,16 @@ void setup_luz(){
 
 
 void luz(){
-	if(s%30==0){
-		if(encendido==1){
+	if(encendido==1){
+		if(ms%500==0){
 		        if(PORTB=0X01){
-				PORTB=0x00; 
-			} else 
-				PORTB=0X01; 
+					PORTB=0x00;
+				} else{
+					PORTB=0X01;
+				}
 		}
+	} else{
+		//controlar el inicio
 	}
 }
 
@@ -44,7 +47,7 @@ void setup_barrera(){
 
 void barrera(){
 	if(PINL2==1){
-		PINK = (PINK2<<1); 
+		PORTK = (PORTK2<<1); 
 	}
 }
 
@@ -58,10 +61,10 @@ int main(void)
 	/* Replace with your application code */
 	while (1)
 	{
-        if(SO1==1){
-            encendido==1; %si el sensor detecta se pone bandera a 1, bandera vale 0 al principio y cunado apaguemos. 
-        }
-        
+		if(SO1==1){
+	        	encendido==1; %si el sensor detecta se pone bandera a 1, bandera vale 0 al principio y cunado apaguemos. 
+        	}
+        	luz; 
 		dummy++;
 	}
 }
