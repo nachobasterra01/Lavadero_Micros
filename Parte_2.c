@@ -22,9 +22,9 @@ void control_L1 (uint8_t modo){ // Se usará en la integración
 			case 0:
 				if(s%10==0){
 					while(ms%500!=0){
-						PORTL= (PL1 <<1);
+						PORTL= 0x02;
 					}
-					PORTL= (PL1 <<0);
+					PORTL= 0x00;
 					}
 				}
 				else
@@ -32,9 +32,9 @@ void control_L1 (uint8_t modo){ // Se usará en la integración
 			default:
 				if(ms%500==0){
 					if(PORTB=0X01){
-						PORTB= (PB0<<0);
+						PORTB= 0x00;
 					} else{
-						PORTB=(PB0 <<1);
+						PORTB=0x01;
 					}
 				}
 		}
@@ -48,13 +48,13 @@ void setup_barrera(){
 
 void barrera(){
 	if(PINL2==1){
-		PORTK = (PK2<<1); 
+		PORTK = 0x04; %no se como asignar solo un bit
 	}
 }
 
 
 
-int dummy;
+int contador_ms;
 int main(void)
 {
 	setup_barrera();
@@ -63,10 +63,13 @@ int main(void)
 	while (1)
 	{
 		if(SO1==1){
-	        	encendido==1; %si el sensor detecta se pone bandera a 1, bandera vale 0 al principio y cunado apaguemos. 
+			if(contador_ms==10){
+				encendido==1;%si el sensor detecta se pone bandera a 1, bandera vale 0 al principio y cunado apaguemos.
+				contador_ms==0; 
+			} 
         	}
-        	luz; 
-		dummy++;
+		contador_ms++; %para controlar cuanto tiempo despues entra el siguiente coche
+        	control_L1(); 
 	}
 }
 
