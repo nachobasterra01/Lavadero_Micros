@@ -34,7 +34,7 @@ void control_L1 (uint8_t modo){ // Se usará en la integración
 					if(PORTB=0X01){
 						PORTB= (PB0<<0);
 					} else{
-						PORTB=(PBO <<1);
+						PORTB=(PB0 <<1);
 					}
 				}
 		}
@@ -48,7 +48,7 @@ void setup_barrera(){
 
 void barrera(){
 	if(PINL2==1){
-		PORTK = (PORTK2<<1); 
+		PORTK = (PK2<<1); 
 	}
 }
 
