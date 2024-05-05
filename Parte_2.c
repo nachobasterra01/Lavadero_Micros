@@ -16,30 +16,31 @@ void setup_luz(){
 }
 
 
-void luz(){
-	if(encendido==1){
-		if(ms%500==0){
-		        if(PORTB=0X01){
-					PORTB=0x00;
-				} else{
-					PORTB=0X01;
+void control_L1 (uint8_t modo){ // Se usará en la integración
+	if (regModoL1 != modo){ //Solo actualizo cuando cambia el modo
+		switch(modo){
+			case 0:
+				if(s%10==0){
+					while(ms%500!=0){
+						PORTL= (PL1 <<1);
+					}
+					PORTL= (PL1 <<0);
+					}
+				}
+				else
+			break;
+			default:
+				if(ms%500==0){
+					if(PORTB=0X01){
+						PORTB= (PB0<<0);
+					} else{
+						PORTB=(PBO <<1);
+					}
 				}
 		}
-	} else{
-		//controlar el inicio
 	}
+	regModoL1 = modo;
 }
-
-//interrupcion periodica para la luz
-// ISR( TIMER5_COMPA_vect ){	//interrupcion periodica cada 0.5s
-// 	if(encendido==1){
-// 		        if(PORTB=0X01){
-// 				PORTB=0x00; 
-// 			} else 
-// 				PORTB=0X01; 
-// 		}
-// }
-
 void setup_barrera(){
 	DDRK= 0X00;
 	PORTK=0X00;  
