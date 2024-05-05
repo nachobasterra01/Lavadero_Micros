@@ -6,28 +6,33 @@
 void setup_luz(){
 	PORTB=0X01;
 	cli();												//deshabilito las interrupciones globales
-	TCCR1A= 0x00;										//configurar CTC
-	TCCR1B= (1 << WGM12) | (1 << CS11) | (1 << CS10);	//Preescalador de 64
+	TCCR5A= 0x00;										//configurar CTC
+	TCCR5B= (1 << WGM52) | (1 << CS51) | (1 << CS50);	//Preescalador de 64
 	OCR1A=62500-1;										//configuro el numero de ciclos a contar
-	TIMSK1= (1 << OCIE0A);								//habilito la mascara de la interrupcion
-	TIFR1= (1 << OCF1A);								//habilito la bandera de la interrupcion
+	TIMSK5= (1 << OCIE0A);								//habilito la mascara de la interrupcion
+	TIFR5= (1 << OCF5A);								//habilito la bandera de la interrupcion
 	sei();												//hbailito las interrupciones globales
 }
 
 
-void luz(){
-	if(s%30==0){
-		if(bandera==1){
+// void parapdeoluz_0.5(){
+// 	if(s%30==0){
+// 		if(encendido==1){
+// 		        if(PORTB=0X01){
+// 				PORTB=0x00; 
+// 			} else 
+// 				PORTB=0X01; 
+// 		}
+// 	}
+// }
+//interrupcion periodica para la luz
+ISR( TIMER5_COMPA_vect ){	//interrupcion periodica cada 0.5s
+	if(encendido==1){
 		        if(PORTB=0X01){
 				PORTB=0x00; 
 			} else 
 				PORTB=0X01; 
 		}
-	}
-}
-//interrupcion periodica para la luz
-ISR( TIMER1_COMPA_vect ){	//interrupcion periodica cada 0.5s
-	
 }
 
 int dummy;
@@ -39,7 +44,7 @@ int main(void)
 	while (1)
 	{
         if(SO1==1){
-            bandera==1; 
+            encendido==1; %si el sensor detecta se pone bandera a 1, bandera vale 0 al principio y cunado apaguemos. 
         }
         
 		dummy++;
