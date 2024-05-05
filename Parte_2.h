@@ -5,5 +5,9 @@
 /*
 --Incluir macros necesarias
 --void funciones();
+void setup_luz(); 
+void luz(); 
+void setup_barrera(); 
+void barrera(); 
 */
 #endif /* PARTE_2_H_ */
