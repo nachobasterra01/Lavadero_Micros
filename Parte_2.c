@@ -43,7 +43,15 @@ void control_L1 (uint8_t modo){ // Se usará en la integración
 }
 void setup_barrera(){
 	DDRK= 0X00;
-	PORTK=0X00;  
+	PORTK=0X00;
+	
+	DDRB &= ~(1<< DDB0); //PCINT0 como entrada
+	cli();
+	PCICR |= (1<<PCIB0);	// Habilito grupo de interrupciones en PORTB (por cambio de estado)
+	PCMSK0 |= (1<<PCINT0);  //Habilito interrupción en pin PCINT0
+	sei();			//Habilito interrupciones globales
+	
+	  
 }
 
 void barrera(){
@@ -52,7 +60,14 @@ void barrera(){
 	}
 }
 
-
+ISR(PCINT0_vect){
+	if(PINB0 != 1){ 
+	barrera();
+	}
+	else {
+	PORTK = 0x00; //deshabilitar barrera
+	}
+}
 
 int contador_ms;
 int main(void)
