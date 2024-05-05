@@ -15,15 +15,19 @@ void setup_luz(){
 }
 
 
-
+void luz(){
+	if(s%30==0){
+		if(bandera==1){
+		        if(PORTB=0X01){
+				PORTB=0x00; 
+			} else 
+				PORTB=0X01; 
+		}
+	}
+}
 //interrupcion periodica para la luz
-ISR( TIMER1_COMPA_vect ){	//interrupcion periodica cada 0.1s
-	if(bandera==1){
-        if(PORTB=0X01){
-		    PORTB=0x00; 
-	    } else 
-	        PORTB=0X01; 
-     }
+ISR( TIMER1_COMPA_vect ){	//interrupcion periodica cada 0.5s
+	
 }
 
 int dummy;
