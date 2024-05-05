@@ -4,7 +4,6 @@
 
 // FUNCIONES (Inicialización, Uso...)
 void setup_luz(){
-	PORTB=0X01;
 	cli();												//deshabilito las interrupciones globales
 	TCCR5A= 0x00;										//configurar CTC
 	TCCR5B= (1 << WGM52) | (1 << CS51) | (1 << CS50);	//Preescalador de 64
