@@ -8,7 +8,7 @@ volatile uint8_t numCar = 0; // Cuenta coches dentro del lavadero
 
 volatile uint8_t EnableEntrance = 1; // '1' permite nuevas entradas de vehículos y '0' no permite
 volatile uint8_t enable_prove_new = 0; // '1' pendiente comprobar entradas de vehículos 
-volatile uint32_t cnt_prove_new = 0; // Cuenta comprobar entradas de vehículos 
+volatile uint32_t cnt_prove_new = 0; // Cuenta tiempo para comprobar entradas de vehículos 
 
 	// Variables globales - Lavadero Horizontal
 volatile uint8_t lav_H[3] = {0,0,0}; // lav_H[0] para SO3, lav_H[1] para SO4, lav_H[2] para SO5
