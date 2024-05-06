@@ -97,3 +97,10 @@ int main(void)
     si SO1 detecta un coche, EN=1¿CONTANDO PULSOS?
 
 //lavado vertical
+void lavadoV_on(){
+	setbit(REG_M1_en_PORT, PIN_M1_en_PORT);		    
+}
+
+void lavadoV_off(){
+	clearbit(REG_M1_en_PORT, PIN_M1_en_PORT);
+}
