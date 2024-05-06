@@ -22,19 +22,26 @@ void control_L1 (uint8_t modo){ // Se usará en la integración
 			case 0:
 				if(s%10==0){
 					while(ms%500!=0){
-						PORTL= 0x02;
+						setbit(REG_LED_PORT, PIN_L1_PORT);	//PORTL= 0x02;
+							#define REG_LED_PORT	PORTL
+		#define REG_LED_DDR 	DDRL
+		#define REG_LED_PIN 	PINL 
+		// L1
+		#define PIN_L1_PORT PL1
+		#define PIN_L1_DDR  DDL1
+		#define PIN_L1_PIN  PINL1
 					}
-					PORTL= 0x00;
+					clearbit(REG_LED_PORT, PIN_L1_PORT);//PORTL= 0x00;
 					}
 				}
 				else
 			break;
 			default:
 				if(ms%500==0){
-					if(PORTB=0X01){
-						PORTB= 0x00;
+					if(PINL0==1){
+						clearbit(REG_LED_PORT, PIN_L1_PORT); //PORTL= 0x00;
 					} else{
-						PORTB=0x01;
+						setbit(REG_LED_PORT, PIN_L1_PORT);//PORTL=0x02;
 					}
 				}
 		}
@@ -56,7 +63,7 @@ void setup_barrera(){
 
 void barrera(){
 	if(PINL2==1){
-		PORTK = 0x04; %no se como asignar solo un bit
+		setbit(REG_M1_en_PORT, PIN_M1_en_PORT)//PORTK = 0x04; 
 	}
 }
 
@@ -98,9 +105,9 @@ int main(void)
 
 //lavado vertical
 void lavadoV_on(){
-	setbit(REG_M1_en_PORT, PIN_M1_en_PORT);		    
+	setbit(REG_M2_en_PORT, PIN_M2_en_PORT);		    
 }
 
 void lavadoV_off(){
-	clearbit(REG_M1_en_PORT, PIN_M1_en_PORT);
+	clearbit(REG_M2_en_PORT, PIN_M2_en_PORT);
 }
