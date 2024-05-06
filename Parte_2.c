@@ -23,13 +23,6 @@ void control_L1 (uint8_t modo){ // Se usará en la integración
 				if(s%10==0){
 					while(ms%500!=0){
 						setbit(REG_LED_PORT, PIN_L1_PORT);	//PORTL= 0x02;
-							#define REG_LED_PORT	PORTL
-		#define REG_LED_DDR 	DDRL
-		#define REG_LED_PIN 	PINL 
-		// L1
-		#define PIN_L1_PORT PL1
-		#define PIN_L1_DDR  DDL1
-		#define PIN_L1_PIN  PINL1
 					}
 					clearbit(REG_LED_PORT, PIN_L1_PORT);//PORTL= 0x00;
 					}
@@ -65,17 +58,16 @@ void barrera(){
 	if(PINL2==1){
 		setbit(REG_M1_en_PORT, PIN_M1_en_PORT)//PORTK = 0x04; 
 	}
+	//delay_seconds(); //configurar segundos para el delay
 }
 
 ISR(PCINT0_vect){
 	if(PINB0 != 1){ 
-	barrera();
+		barrera();
 	}
 	else {
-	PORTK = 0x00; //deshabilitar barrera
-		delay_seconds(); //configurar segundos para el delay
+		clearbit(REG_M1_en_PORT, PIN_M1_en_PORT);//PORTK = 0x00; //deshabilitar barrera
 	}
-	
 }
 
 int contador_ms;
