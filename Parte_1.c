@@ -113,7 +113,7 @@ void stop_secado(){
 }
 
 void secado(){
-	if (limit_switch_secado = 1 && isBitSet(REG_M5_en_PORT,PIN_M5_en_PORT)){
+	if (limit_switch_secado == 1 && isBitSet(REG_M5_en_PORT,PIN_M5_en_PORT)){	// Sensores activos a nivel bajo -> limit_switch_secado == 0
 		stop_secado();
 		toggleBit(REG_M5_di_PORT,PIN_M5_di_PORT);
 	}
